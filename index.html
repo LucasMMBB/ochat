@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ochat</title>
+    <!-- Customized CSS -->
+    <link rel="stylesheet" href="/main.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Setting the right viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/frontend.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Welcome to Ochat <small id="oc-roomtitle"></small></h1>
+        </div>
+        <div id="oc-login" class="col-md-4 col-sm-8 col-xs-12">
+            <form id="oc-join">
+                <div class="form-group">
+                    <label for="nickname">Please Enter Your Nickname</label>
+                    <input type="text" class="form-control" id="nickname" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label>Chat Room</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="room1"> 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="room2"> 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="room3"> 3
+                    </label>
+                </div>
+                <button id="oc-gotochat" type="submit" class="btn btn-default">Go to chat</button>
+            </form>
+        </div>
+        <div id="oc-chat" class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Group Chat Messages
+                    </div>
+                    <ul id="messages"></ul>
+                </div>
+                <form class="chat" action="">
+                    <input id="m" autocomplete="off" />
+                    <button>Send</button>
+                </form>
+            </div>
+            <div id="oc-privatechat" class="col-md-4 col-sm-4 col-xs-12">
+                <div class="oc-pchat">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Maoxu Liu</div>
+                        <div class="panel-body">
+                            <ul id="oc-privatechat-messages" class="list-group"></ul>
+                        </div>
+                        <div class="panel-footer">
+                            <form id="oc-pchat-sbt" >
+                                <textarea id="oc-pchat-text" type="text" class="message-input" placeholder="Type message..."></textarea>
+                                <button type="submit" class="message-submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="oc-onlinelist" class="list-group col-md-3 col-sm-3 col-xs-12">
+                <li class="list-group-item active">Group Chat</li>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>
