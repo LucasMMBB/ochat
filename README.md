@@ -1,6 +1,6 @@
-# Project Title
+# Ocaht
 
-One Paragraph of project description goes here
+real-time communication web application in socket.io
 
 ## Getting Started
 
@@ -8,53 +8,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+You need to install socket.io and some other libraries
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Follow the steps to run this app.
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Install libraries
 
 ```
-until finished
+npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Run app
 
 ```
-Give an example
+open localhost:3000
 ```
 
-### And coding style tests
+Now you can use this chat app,
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
