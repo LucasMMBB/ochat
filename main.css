@@ -59,4 +59,10 @@ form.chat button {
 	color: darkseagreen;
 }
 
-/*-------------- private chat -------------*/
+/*----------- helper classes -----------*/
+.alignright{
+    text-align: right;
+}
+.alignleft{
+    text-align: left;
+}

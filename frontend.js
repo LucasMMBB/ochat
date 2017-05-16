@@ -1,17 +1,13 @@
-var name // owner of this page, aka sender
-    , name1, name2, state;
+var name, name1, name2, state;
 // Socket IO
 var socket = io();
-// second chat room
-var socketnsp = io('/namespace');
 // define functions
 function startChat() {
-    // send private chat invitations
+    // send private chat invitations. name1 is sender's name, name2 is reciver's name..Event: end-to-end
     name1 = name;
     var x = event.target;
     name2 = x.parentElement.children[1].innerText;
     state = 0; // invitation to be determined
-    // name1 is sender's name, name2 is reciver's name..Event: end-to-end
     socket.emit("end-to-end", name1, name2, state);
 }
 
@@ -57,14 +53,15 @@ $(document).ready(function() {
         $('#m').val('');
         return false;
     });
-    $('#oc-pchat-sbt').submit(function(){
+    $('#oc-pchat-sbt').submit(function() {
         // one to one private chat
-        $('#oc-privatechat-messages').append($('<li class="list-group-item pull-left">').text($('#oc-pchat-text').val()));
-        if(name === name1){
+        $('#oc-privatechat-messages').append($('<li class="list-group-item list-group-item-info alignright">').text($('#oc-pchat-text').val()));
+        if (name === name1) {
             socket.emit('oc-pchat', name2, $('#oc-pchat-text').val());
-        }else if(name === name2){
+        } else if (name === name2) {
             socket.emit('oc-pchat', name1, $('#oc-pchat-text').val());
-        }else{}
+        } else {}
+        $('#oc-pchat-text').val('');
         return false;
     });
     socket.on('joinus', function(msg1, msg2) {
@@ -112,7 +109,7 @@ $(document).ready(function() {
     });
     socket.on('oc-pchat', (nm, msg) => {
         if (name === nm) { // determin if this is receiver
-            $('#oc-privatechat-messages').append($('<li class="list-group-item pull-left">').text(msg));
+            $('#oc-privatechat-messages').append($('<li class="list-group-item list-group-item-success alignleft">').text(msg));
         }
     });
 });

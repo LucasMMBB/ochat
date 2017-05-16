@@ -4,11 +4,9 @@ var io = require('socket.io')(http);
 
 var iochat = require('./chat.js');
 
-// custom namespace for multichat room
-//var nsp = io.of('/my-namespace');
-
 var people = {};
 var roomnum; // defalut room number
+var room1, room2, room3
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
@@ -69,7 +67,7 @@ io.on('connection', function(socket) {
         }
     });
     socket.on('oc-pchat', (nm, msg) => {
-    	socket.broadcast.to(roomnum).emit('oc-pchat', nm, msg);
+        socket.broadcast.to(roomnum).emit('oc-pchat', nm, msg);
     });
     socket.on('disconnect', function() {
         var name_leave = people[socket.id];
