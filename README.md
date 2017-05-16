@@ -1,4 +1,4 @@
-# Ocaht
+# Ochat
 
 real-time communication web application in socket.io
 
