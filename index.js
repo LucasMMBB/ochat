@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
@@ -8,17 +9,12 @@ var people = {};
 var roomnum; // defalut room number
 var room1, room2, room3
 
+app.use(express.static('public'));
+
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/main.css', function(req, res) {
-    res.sendFile(__dirname + '/main.css');
-});
-
-app.get('/frontend.js', function(req, res) {
-    res.sendFile(__dirname + '/frontend.js');
-});
 
 //iochat();
 io.on('connection', function(socket) {
