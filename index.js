@@ -7,7 +7,9 @@ var iochat = require('./chat.js');
 
 var people = {};
 var roomnum; // defalut room number
-var room1, room2, room3
+var room1 = {};
+var room2 = {};
+var room3 = {};
 
 app.use(express.static('public'));
 
@@ -15,29 +17,36 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+app.get('*', function(req, res) {
+    res.redirect('/');
+});
 
 //iochat();
 io.on('connection', function(socket) {
     socket.on('join', function(name, room) {
         people[socket.id] = name;
         if (room == 'room1') {
+            room1[socket.id] = name;
             socket.join('room1');
             roomnum = 'room1';
-            //console.log(room + ': ' + name + ' connected!');
+            console.log("/******** The below are room1 ********/");
+            console.log(room1);
         } else if (room == 'room2') {
+            room2[socket.id] = name;
             socket.join('room2');
             roomnum = 'room2';
-            //console.log(room + ': ' + name + ' connected!');
+            console.log("/******** The below are room2 ********/");
+            console.log(room2);
         } else {
+            room3[socket.id] = name;
             socket.join('room3');
             roomnum = 'room3';
-            //console.log(room + ': ' + name + ' connected!');
+            console.log("/******** The below are room3 ********/");
+            console.log(room3);
         }
+        socket.broadcast.to(room).emit('joinus', name, name + ' joins us!');
         console.log(room + ': ' + name + ' connected!');
         console.log(people);
-        //socket.broadcast.emit('joinus', name, name + ' joins us!');
-        // sending to all clients in 'game' room(channel) except sender
-        socket.broadcast.to(room).emit('joinus', name, name + ' joins us!');
     });
     socket.on('chat message', function(name, msg) {
         socket.broadcast.to(roomnum).emit('private message', name, msg);
@@ -70,6 +79,16 @@ io.on('connection', function(socket) {
         socket.broadcast.to(roomnum).emit('leftus', name_leave + ' has left!');
         //console.log(people[socket.id] + ' disconnected!');
         console.log(people[socket.id] + ' disconnected!');
+        if(room1[socket.id]!=null){
+            delete room1[socket.id];
+            console.log(room1);
+        }else if(room2[socket.id]!=null){
+            delete room2[socket.id];
+            console.log(room2);
+        }else{
+            delete room3[socket.id];
+            console.log(room3);
+        }
         delete people[socket.id];
     });
 });
