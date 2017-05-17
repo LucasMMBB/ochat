@@ -34,7 +34,7 @@ Now you can use this chat app,
 
 * **Maoxu Liu** - *Initial work* - [LucasMMBB](https://github.com/LucasMMBB)
 
-See also the author's website [Maoxu Liu](https://welcometolucs.com) who participated in this project.
+See also the author's website [Maoxu Liu](http://welcometolucs.com) to explore more about maoxu.
 
 ## License
 
