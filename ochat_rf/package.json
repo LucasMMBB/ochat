@@ -1,0 +1,11 @@
+{
+  "name": "ochat_rf",
+  "version": "1.0.0",
+  "description": "Refactor this project with some new technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
