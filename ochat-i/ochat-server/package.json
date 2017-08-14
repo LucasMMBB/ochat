@@ -1,11 +1,11 @@
 {
-  "name": "ochat_rf",
+  "name": "ochat-server",
   "version": "1.0.0",
-  "description": "Refactor this project with some new technology",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Maoxu",
   "license": "ISC"
 }
